@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Furniture's Design — Handcrafted Furniture, Nairobi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6F0E3;
+    --cream-2:#EEE3CE;
+    --walnut:#3A281C;
+    --walnut-deep:#241812;
+    --tan:#B08A5C;
+    --tan-soft:#D9C4A0;
+    --rust:#A6552F;
+    --text:#2B1E15;
+    --text-soft:#6B5945;
+    --line: rgba(58,40,28,0.14);
+    --surface: #FFFDF8;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --cream:#211611;
+      --cream-2:#2A1D16;
+      --surface:#2A1D16;
+      --text:#EFE3D2;
+      --text-soft:#C7B49B;
+      --line: rgba(217,196,160,0.16);
+      --tan:#C79E6C;
+      --tan-soft:#8A6C48;
+      --rust:#D07A4E;
+      --walnut:#EFE3D2;
+      --walnut-deep:#F6F0E3;
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#211611;
+    --cream-2:#2A1D16;
+    --surface:#2A1D16;
+    --text:#EFE3D2;
+    --text-soft:#C7B49B;
+    --line: rgba(217,196,160,0.16);
+    --tan:#C79E6C;
+    --tan-soft:#8A6C48;
+    --rust:#D07A4E;
+    --walnut:#EFE3D2;
+    --walnut-deep:#F6F0E3;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--cream);
+    color:var(--text);
+    font-family:'Work Sans', ui-sans-serif, system-ui, sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  h1,h2,h3{ font-family:'Fraunces', Georgia, 'Times New Roman', serif; font-weight:500; color:var(--walnut); }
+  ::selection{ background:var(--tan-soft); color:var(--walnut-deep); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0;
+    transition:padding .4s ease, background .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    padding:12px 0;
+    background:color-mix(in srgb, var(--cream) 92%, transparent);
+    backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 var(--line);
+  }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-family:'Fraunces', serif; font-size:1.25rem; font-weight:500; letter-spacing:.01em; color:var(--walnut); display:flex; align-items:center; gap:10px; }
+  .brand svg{ width:26px; height:26px; flex-shrink:0; }
+  .nav-links{ display:flex; align-items:center; gap:34px; font-size:.92rem; color:var(--text-soft); }
+  .nav-links a{ position:relative; padding:4px 0; transition:color .25s ease; }
+  .nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0%; height:1px; background:var(--rust); transition:width .3s ease; }
+  .nav-links a:hover{ color:var(--walnut); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:var(--rust); color:#FBF3E8 !important; padding:10px 20px; border-radius:2px;
+    font-size:.88rem; letter-spacing:.02em; transition:background .3s ease, transform .2s ease;
+  }
+  .nav-cta:hover{ background:#8C4626; transform:translateY(-1px); }
+  .nav-cta::after{ display:none; }
+  .menu-btn{ display:none; background:none; border:0; color:var(--walnut); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex; align-items:center;
+    padding-top:110px;
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 15%, color-mix(in srgb, var(--tan) 22%, transparent), transparent 60%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-grain{
+    position:absolute; inset:0; opacity:.5; pointer-events:none;
+    background-image: repeating-linear-gradient(100deg, transparent, transparent 58px, var(--line) 59px, transparent 60px);
+  }
+  .hero .wrap{ position:relative; display:grid; grid-template-columns:1.1fr .9fr; gap:60px; align-items:center; }
+  .eyebrow{ font-size:.82rem; color:var(--rust); letter-spacing:.04em; margin-bottom:18px; opacity:0; transform:translateY(8px); animation:riseIn .8s ease .1s forwards; }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.06; letter-spacing:-0.01em;
+    max-width:11ch;
+  }
+  .hero h1 span{ display:block; overflow:hidden; }
+  .hero h1 span em{ font-style:italic; color:var(--rust); font-weight:500; }
+  .hero h1 span b{ display:inline-block; opacity:0; transform:translateY(100%); animation:riseIn .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  .hero-sub{
+    margin-top:22px; max-width:42ch; color:var(--text-soft); font-size:1.06rem;
+    opacity:0; transform:translateY(10px); animation:riseIn .8s ease .9s forwards;
+  }
+  .hero-actions{ margin-top:34px; display:flex; gap:16px; flex-wrap:wrap; opacity:0; transform:translateY(10px); animation:riseIn .8s ease 1.05s forwards; }
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; padding:14px 26px; border-radius:2px;
+    font-size:.92rem; letter-spacing:.01em; transition:background .3s ease, color .3s ease, border-color .3s ease, transform .2s ease;
+  }
+  .btn-primary{ background:var(--rust); color:#FBF3E8; }
+  .btn-primary:hover{ background:#8C4626; transform:translateY(-2px); }
+  .btn-outline{ border:1px solid var(--line); color:var(--walnut); }
+  .btn-outline:hover{ border-color:var(--tan); background:color-mix(in srgb, var(--tan) 12%, transparent); }
+  .btn svg{ width:17px; height:17px; }
+
+  .hero-rating{
+    margin-top:44px; display:flex; align-items:center; gap:14px;
+    opacity:0; animation:riseIn .8s ease 1.2s forwards;
+  }
+  .stars{ display:flex; gap:2px; color:var(--rust); }
+  .stars svg{ width:15px; height:15px; }
+  .hero-rating .num{ font-family:'Fraunces', serif; font-size:1.05rem; color:var(--walnut); }
+  .hero-rating .lbl{ font-size:.82rem; color:var(--text-soft); }
+
+  @keyframes riseIn{ to{ opacity:1; transform:translateY(0); } }
+
+  .hero-visual{ position:relative; aspect-ratio:4/5; }
+  .hero-visual .panel{
+    position:absolute; inset:0; border-radius:4px; background:var(--walnut);
+    background:linear-gradient(155deg, var(--walnut) 0%, var(--walnut-deep) 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 30px 60px -20px rgba(36,24,18,0.35);
+    opacity:0; transform:scale(.94); animation:panelIn 1s cubic-bezier(.2,.7,.2,1) .3s forwards;
+  }
+  @keyframes panelIn{ to{ opacity:1; transform:scale(1); } }
+  .hero-visual .panel svg{ width:58%; height:58%; color:var(--tan-soft); }
+  .hero-visual .chip{
+    position:absolute; bottom:-22px; left:-22px; background:var(--surface);
+    border:1px solid var(--line); padding:16px 20px; border-radius:3px; max-width:230px;
+    box-shadow:0 20px 40px -18px rgba(36,24,18,0.25);
+    opacity:0; transform:translateY(14px); animation:riseIn .8s ease 1s forwards;
+  }
+  .hero-visual .chip .t{ font-family:'Fraunces', serif; font-size:.95rem; color:var(--walnut); margin-bottom:3px; }
+  .hero-visual .chip .d{ font-size:.78rem; color:var(--text-soft); }
+
+  /* ---------- SECTION shared ---------- */
+  section{ padding:120px 0; }
+  .section-head{ max-width:560px; margin-bottom:56px; }
+  .section-head .eyebrow{ animation:none; opacity:1; transform:none; }
+  .section-head h2{ font-size:clamp(1.8rem, 3.2vw, 2.5rem); line-height:1.15; }
+  .section-head p{ margin-top:16px; color:var(--text-soft); }
+
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:70px; align-items:center; }
+  .about-art{ position:relative; aspect-ratio:1/1; }
+  .about-art .ring{
+    position:absolute; inset:0; border:1px solid var(--tan-soft); border-radius:4px;
+    transform:translate(16px,16px);
+  }
+  .about-art .panel{
+    position:absolute; inset:0; border-radius:4px; background:var(--cream-2);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .about-art .panel svg{ width:48%; color:var(--rust); opacity:.85; }
+  .about ul{ list-style:none; margin-top:26px; display:grid; gap:14px; }
+  .about li{ display:flex; gap:12px; align-items:flex-start; color:var(--text-soft); font-size:.95rem; }
+  .about li svg{ width:18px; height:18px; flex-shrink:0; margin-top:2px; color:var(--rust); }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  .gcard{
+    background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:34px 26px;
+    transition:transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease;
+  }
+  .gcard:hover{ transform:translateY(-6px); box-shadow:0 24px 44px -22px rgba(36,24,18,0.25); border-color:var(--tan-soft); }
+  .gcard .icon-wrap{
+    width:56px; height:56px; border-radius:50%; background:var(--cream-2);
+    display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+    transition:background .4s ease;
+  }
+  .gcard:hover .icon-wrap{ background:var(--rust); }
+  .gcard .icon-wrap svg{ width:28px; height:28px; color:var(--rust); transition:color .4s ease; }
+  .gcard:hover .icon-wrap svg{ color:#FBF3E8; }
+  .gcard h3{ font-size:1.12rem; margin-bottom:8px; }
+  .gcard p{ font-size:.88rem; color:var(--text-soft); }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{ background:var(--walnut-deep); color:var(--cream); }
+  :root[data-theme="dark"] .testi, :root:not([data-theme="light"]) .testi{ background:var(--cream-2); }
+  .testi .section-head h2, .testi .section-head p{ color:var(--cream); }
+  :root[data-theme="dark"] .testi .section-head h2, :root:not([data-theme="light"]) .testi .section-head h2{ color:var(--walnut); }
+  :root[data-theme="dark"] .testi .section-head p, :root:not([data-theme="light"]) .testi .section-head p{ color:var(--text-soft); }
+  .testi-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:26px; }
+  .tcard{
+    background:rgba(246,240,227,0.06); border:1px solid rgba(246,240,227,0.14);
+    padding:34px; border-radius:3px;
+  }
+  :root[data-theme="dark"] .tcard, :root:not([data-theme="light"]) .tcard{ background:var(--surface); border-color:var(--line); }
+  .tcard .stars{ margin-bottom:18px; }
+  .tcard p{ font-family:'Fraunces', serif; font-size:1.18rem; font-style:italic; line-height:1.5; color:var(--cream); }
+  :root[data-theme="dark"] .tcard p, :root:not([data-theme="light"]) .tcard p{ color:var(--walnut); }
+  .tcard .who{ margin-top:20px; font-size:.85rem; color:var(--tan-soft); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:.95fr 1.05fr; gap:70px; }
+  .info-item{ display:flex; gap:16px; padding:20px 0; border-bottom:1px solid var(--line); }
+  .info-item:first-child{ padding-top:0; }
+  .info-item .ic{ width:40px; height:40px; border-radius:50%; background:var(--cream-2); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .info-item .ic svg{ width:19px; height:19px; color:var(--rust); }
+  .info-item .lbl{ font-size:.78rem; color:var(--text-soft); text-transform:none; margin-bottom:3px; }
+  .info-item .val{ font-family:'Fraunces', serif; font-size:1.05rem; color:var(--walnut); }
+  .info-item .val a:hover{ color:var(--rust); }
+
+  form{ display:grid; gap:18px; }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field label{ font-size:.82rem; color:var(--text-soft); }
+  .field input, .field textarea{
+    background:var(--surface); border:1px solid var(--line); border-radius:2px; padding:13px 15px;
+    font-family:inherit; font-size:.95rem; color:var(--text); transition:border-color .3s ease;
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--rust); }
+  .field textarea{ resize:vertical; min-height:110px; }
+  form .btn{ justify-self:start; border:none; cursor:pointer; }
+
+  footer{ padding:44px 0; border-top:1px solid var(--line); }
+  footer .wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  footer .brand{ font-size:1.05rem; }
+  footer .fmeta{ font-size:.82rem; color:var(--text-soft); }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed; bottom:26px; right:26px; z-index:90;
+    width:56px; height:56px; border-radius:50%; background:#2E7D5B;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 30px -10px rgba(0,0,0,0.4);
+    transition:transform .3s ease;
+  }
+  .wa-float:hover{ transform:scale(1.08); }
+  .wa-float svg{ width:28px; height:28px; color:#fff; }
+
+  @media (max-width:880px){
+    .nav-links{ display:none; }
+    .menu-btn{ display:block; }
+    .hero .wrap{ grid-template-columns:1fr; gap:70px; }
+    .hero-visual{ order:-1; max-width:340px; margin:0 auto; }
+    .about-grid, .contact-grid{ grid-template-columns:1fr; gap:44px; }
+    .gallery-grid{ grid-template-columns:1fr 1fr; }
+    .testi-grid{ grid-template-columns:1fr; }
+    section{ padding:80px 0; }
+  }
+  @media (max-width:520px){
+    .gallery-grid{ grid-template-columns:1fr; }
+    .hero{ padding-top:100px; }
+    .wrap{ padding:0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav class="wrap">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 13h16v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6Z"/><path d="M4 13v-2a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v2"/><path d="M6 20v1.5M18 20v1.5"/></svg>
+      Top Furniture's Design
+    </a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+      <a href="https://wa.me/254712653341" target="_blank" rel="noopener" class="nav-cta">WhatsApp Us</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-grain"></div>
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">MANYANJA ROAD · NAIROBI</div>
+        <h1>
+          <span><b>Furniture</b></span>
+          <span><b><em>made to</em></b></span>
+          <span><b>live in.</b></span>
+        </h1>
+        <p class="hero-sub">Custom sofas, dining sets and home pieces, built by hand in Nairobi and delivered on time — every time.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/254712653341" target="_blank" rel="noopener" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.2 14.2c-.24.68-1.2 1.28-1.98 1.44-.53.11-1.22.2-3.55-.76-2.98-1.23-4.9-4.25-5.05-4.45-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.25.6.85 2.06.92 2.21.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.3.4-.44.53-.15.15-.3.3-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.66-.07.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.72-.17 1.4Z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="tel:+254712653341" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            0712 653341
+          </a>
+        </div>
+        <div class="hero-rating">
+          <div class="stars">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+          </div>
+          <span class="num">5.0</span>
+          <span class="lbl">on Google · Nairobi's trusted furniture makers</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="panel">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.3">
+            <path d="M10 34h44v14a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V34Z"/>
+            <path d="M10 34v-8a6 6 0 0 1 6-6h32a6 6 0 0 1 6 6v8"/>
+            <path d="M14 50v4M50 50v4"/>
+            <path d="M10 30h44" stroke-opacity=".5"/>
+          </svg>
+        </div>
+        <div class="chip">
+          <div class="t">7-Seater Sofa Build</div>
+          <div class="d">Delivered on time — one of our recent custom orders</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-art reveal">
+        <div class="ring"></div>
+        <div class="panel">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="12" y="14" width="40" height="6" rx="1"/>
+            <path d="M16 20v28M48 20v28"/>
+            <path d="M12 48h40"/>
+            <path d="M20 26h10M20 32h16M20 38h12" stroke-opacity=".6"/>
+          </svg>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">OUR STORY</div>
+        <h2>Built on Manyanja Road, made to fit your home.</h2>
+        <p style="margin-top:18px; color:var(--text-soft); max-width:52ch;">
+          Top Furniture's Design has spent years building sofas, sectionals and home furniture by hand for families across Nairobi. Every piece is made to order — sized, shaped and upholstered around the room it's going into, not pulled off a shelf.
+        </p>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+            Custom sizing and upholstery for every order
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+            On-time delivery across Nairobi
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>
+            Open Monday – Saturday, 9am to 6pm
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">WHAT WE BUILD</div>
+        <h2>A piece for every room</h2>
+        <p>From statement sofas to everyday dining tables — each piece is built to order in our Nairobi workshop.</p>
+      </div>
+      <div class="gallery-grid">
+
+        <div class="gcard reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h18v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5Z"/><path d="M3 12V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3"/><path d="M5 18v2M19 18v2"/></svg></div>
+          <h3>Sofas &amp; Sectionals</h3>
+          <p>Custom 3, 5 and 7-seater sofas, upholstered in fabric or leather of your choice.</p>
+        </div>
+
+        <div class="gcard reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="10" width="18" height="3" rx="1"/><path d="M5 13v6M19 13v6"/><path d="M9 10V6M15 10V6"/></svg></div>
+          <h3>Dining Sets</h3>
+          <p>Solid dining tables and chair sets, sized to fit your dining room exactly.</p>
+        </div>
+
+        <div class="gcard reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6"/><path d="M4 19h16M6 11V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg></div>
+          <h3>Beds &amp; Headboards</h3>
+          <p>Bed frames and upholstered headboards built to standard or custom sizes.</p>
+        </div>
+
+        <div class="gcard reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="14" width="16" height="4" rx="1"/><path d="M6 18v2M18 18v2"/></svg></div>
+          <h3>Coffee &amp; Side Tables</h3>
+          <p>Wooden coffee tables and side tables finished to match your sofa set.</p>
+        </div>
+
+        <div class="gcard reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 4v16M5 9h4M5 14h4"/></svg></div>
+          <h3>TV Units &amp; Storage</h3>
+          <p>Media units, cabinets and storage pieces built for your living room layout.</p>
+        </div>
+
+        <div class="gcard reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Custom Orders</h3>
+          <p>Have a design in mind? Bring your sketch or photo and we'll build it to size.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="testi" id="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">FROM OUR CUSTOMERS</div>
+        <h2>What Nairobi is saying</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="tcard reveal">
+          <div class="stars">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+          </div>
+          <p>"I requested a 7 seater sofa and they delivered on time."</p>
+          <div class="who">— Google Review</div>
+        </div>
+        <div class="tcard reveal">
+          <div class="stars">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.3 5.9.8-4.2 4.1 1 5.8L10 14.7l-5.3 2.8 1-5.8-4.2-4.1 5.9-.8L10 1.5z"/></svg>
+          </div>
+          <p>"Good quality furniture."</p>
+          <div class="who">— Google Review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">GET IN TOUCH</div>
+        <h2>Let's build your next piece</h2>
+        <p style="margin-top:14px; color:var(--text-soft);">Send us a message, call, or drop by the workshop — we usually reply the same day.</p>
+
+        <div style="margin-top:36px;">
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <div class="lbl">Location</div>
+              <div class="val">Manyanja Road, near Car Wash, Nairobi</div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></div>
+            <div>
+              <div class="lbl">Phone / WhatsApp</div>
+              <div class="val"><a href="tel:+254712653341">0712 653341</a></div>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+            <div>
+              <div class="lbl">Hours</div>
+              <div class="val">Mon – Sat, 9am – 6pm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <form id="contactForm">
+          <div class="field">
+            <label for="cname">Your name</label>
+            <input id="cname" type="text" placeholder="e.g. Wanjiru Kamau" required>
+          </div>
+          <div class="field">
+            <label for="cphone">Phone number</label>
+            <input id="cphone" type="tel" placeholder="e.g. 07xx xxx xxx" required>
+          </div>
+          <div class="field">
+            <label for="cmsg">What are you looking for?</label>
+            <textarea id="cmsg" placeholder="Tell us about the piece you'd like — size, style, room it's for..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.2 14.2c-.24.68-1.2 1.28-1.98 1.44-.53.11-1.22.2-3.55-.76-2.98-1.23-4.9-4.25-5.05-4.45-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.25.6.85 2.06.92 2.21.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.3.4-.44.53-.15.15-.3.3-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.66-.07.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.72-.17 1.4Z"/></svg>
+            Send via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand" style="font-size:1rem;">Top Furniture's Design</span>
+    <span class="fmeta">Manyanja Road, Nairobi · 0712 653341 · Mon–Sat 9am–6pm</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/254712653341" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.2 14.2c-.24.68-1.2 1.28-1.98 1.44-.53.11-1.22.2-3.55-.76-2.98-1.23-4.9-4.25-5.05-4.45-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37.2 0 .4 0 .58.01.19.01.44-.07.68.52.25.6.85 2.06.92 2.21.07.15.12.33.02.53-.1.2-.15.33-.3.5-.15.18-.3.4-.44.53-.15.15-.3.3-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.48.13.66-.07.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.72-.17 1.4Z"/></svg>
+</a>
+
+<script>
+  // Nav shrink on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive:true });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => io.observe(el));
+
+  // Contact form -> WhatsApp
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('cname').value.trim();
+    const phone = document.getElementById('cphone').value.trim();
+    const msg = document.getElementById('cmsg').value.trim();
+    const text = `Hi Top Furniture's Design, my name is ${name} (${phone}). ${msg}`;
+    window.open(`https://wa.me/254712653341?text=${encodeURIComponent(text)}`, '_blank');
+  });
+</script>
+
+</body>
+</html>
